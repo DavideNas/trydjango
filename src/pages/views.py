@@ -4,5 +4,10 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
-def home_view(*args, **kwargs):
+def home_view(request,*args, **kwargs):
+	print(args, kwargs)
+	print(request.user)
 	return HttpResponse("<h1>Hello Django</h1>")
+
+def contact_view(*args, **kwargs):
+	return HttpResponse("<h1>Contact Page</h1>")
