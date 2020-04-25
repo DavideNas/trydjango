@@ -6,6 +6,17 @@
 	<p>
 		{{ my_text }} , {{ my_number }}
 		<br>
-		{{ my_list }}
+		<ul>
+		{% for my_sub_item in my_list %}
+			<li>{{ my_sub_item }}</li>
+		{% endfor %}
+		</ul>
+
+		<!-- or -->
+		<ul>
+		{% for my_sub_item in my_list %}
+			<li>{{ forloop.counter }} - {{ my_sub_item }}</li>
+		{% endfor %}
+		</ul>
 	</p>
 {% endblock %}
