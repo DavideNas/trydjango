@@ -6,6 +6,12 @@
 	<p>
 		{{ my_text }} , {{ my_number }} , {{ this_is_true }}
 		<br>
+			{{ my_html|safe }}
+		<br>
+			{{ my_html|striptags|slugify }}
+		<br>
+			{{ my_html|safe|truncatechars_html:8 }}
+		<br>
 		<ul>
 		{% for my_sub_item in my_list %}
 			<li>{{ my_sub_item }}</li>
