@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Item</h3>
+{{ spezia.title }}
+<br>
+<p>
+	{% if spezia.description != None and spezia.description != '' %}
+	{{ spezia.description }}
+	{% else %}Description Coming Soon{% endif %}
+</p>
+<br>
+<b>Il prezzo è:</b>
+	{{ spezia.price }}
+
+{% endblock %}
