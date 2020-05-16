@@ -20,6 +20,13 @@ from .models import Product
 #	}
 #	return render(request, "products/product_create.html", context)
 
+def dynamic_lookup_views(request, id):
+	obj = Product.objects.get(id=id)
+	context = {
+		"spezia": obj
+	}
+	return render(request, "products/product_detail.html", context)
+
 def render_initial_data(request):
 	initial_data ={
 		'title' : "My precious spice"
