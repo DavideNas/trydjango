@@ -1,10 +1,12 @@
+
 from django import forms
+
 
 from .models import Product
 
 class ProductForm(forms.ModelForm):
 	title 		= forms.CharField(label='', widget=forms.TextInput(attrs={"placeholder": "Your spice"}))
-	email 		= forms.EmailField()
+	#email 		= forms.EmailField()
 	description = forms.CharField(
 									required=False, 
 									widget=forms.Textarea(
@@ -22,22 +24,22 @@ class ProductForm(forms.ModelForm):
 		model = Product
 		fields = [
 			'title',
-			'email',
+			#'email',
 			'description',
 			'price'
 		]
 
 	def clean_title(self, *args, **kwargs):
 		title = self.cleaned_data.get("title")
-		if "in polvere" in title:
-			return title
-		else:
-			raise forms.ValidationError("Non ho questa spezia")
+		#if "in polvere" in title:
+		return title
+		#else:
+		#	raise forms.ValidationError("Non ho questa spezia")
 
 	def clean_email(self, *args, **kwargs):
 		email = self.cleaned_data.get("email")
-		if not email.endswith("edu"):
-			raise forms.ValidationError("This is not a valid email")
+		#if not email.endswith("edu"):
+		#	raise forms.ValidationError("This is not a valid email")
 		return email
 
 class RawProductForm(forms.Form):

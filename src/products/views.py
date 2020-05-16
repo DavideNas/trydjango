@@ -20,6 +20,19 @@ from .models import Product
 #	}
 #	return render(request, "products/product_create.html", context)
 
+def render_initial_data(request):
+	initial_data ={
+		'title' : "My precious spice"
+	}
+	obj = Product.objects.get(id=1)
+	form = ProductForm(request.POST or None, instance=obj)
+	if form.is_valid():
+		form.save()
+	context = {
+		'form': form
+	}
+	return render(request, "products/product_create.html", context)
+
 def product_create_view(request):
 	form = ProductForm(request.POST or None)
 	if form.is_valid():
