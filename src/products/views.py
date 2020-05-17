@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, Http404
 
 from .forms import ProductForm, RawProductForm
 
@@ -21,11 +21,14 @@ from .models import Product
 #	return render(request, "products/product_create.html", context)
 
 def dynamic_lookup_views(request, id):
-	obj = Product.objects.get(id=id)
-	context = {
-		"spezia": obj
-	}
-	return render(request, "products/product_detail.html", context)
+	try:
+		obj = Product.objects.get(id=id)
+		context = {
+			"spezia": obj
+		}
+		return render(request, "products/product_detail.html", context)
+	except Product.DoesNotExist:
+		raise Http404
 
 def render_initial_data(request):
 	initial_data ={
