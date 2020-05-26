@@ -47,13 +47,10 @@ def product_create_view(request):
 	return render(request, "products/product_create.html", context)
 
 def product_detail_view(request, *args, **kwargs):
-	
 	obj = Product.objects.get(id=1)
-
 	context = {
 		'spezia': obj
 	}
-
 	return render(request, "products/product_detail.html", context)
 
 def product_delete_view(request, id):
